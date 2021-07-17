@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
        
 <tiles-definitions>
-  <definition name="template.project" template="/WEB-INF/views/templates/project_template.jsp">
+  <definition name="template.project" template="/WEB-INF/views/templates/project.jsp">
     <put-attribute name="header" value="/WEB-INF/views/components/project/header.jsp" />
     <put-attribute name="body" value="" />
     <put-attribute name="footer" value="/WEB-INF/views/components/project/footer.jsp" />
