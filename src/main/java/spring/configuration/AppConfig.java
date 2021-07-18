@@ -32,6 +32,7 @@ public class AppConfig {
 	@Bean
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+		messageSource.setBasenames("messages/validate", "messages/success", "messages/error");
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
@@ -53,7 +54,7 @@ public class AppConfig {
 	@Bean(name = "tilesConfigurer")
 	public TilesConfigurer getTilesConfigurer() {
 		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-		tilesConfigurer.setDefinitions("/WEB-INF/templates/tiles-project.xml","/WEB-INF/templates/tiles-admin.xml");
+		tilesConfigurer.setDefinitions("/WEB-INF/templates/tiles-project.xml", "/WEB-INF/templates/tiles-admin.xml");
 		return tilesConfigurer;
 	}
 
