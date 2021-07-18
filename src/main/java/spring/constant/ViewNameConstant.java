@@ -8,5 +8,5 @@ public class ViewNameConstant {
 
 	public static final String ADMIN_INDEX = "admin.index";
 	public static final String CAT_INDEX = "admin.cat.index";
-	
+	public static final String PRODUCT_INDEX = "admin.product.index";
 }

@@ -11,6 +11,6 @@ public class URLConstant {
 	public static final String URL_ADMIN = "admin";
 	public static final String URL_ADMIN_INDEX = "trang-chu.html";
 	public static final String URL_ADMIN_CAT_INDEX = "danh-muc.html";
-
+	public static final String URL_ADMIN_PRODUCT_INDEX = "san-pham.html";
 	
 }
