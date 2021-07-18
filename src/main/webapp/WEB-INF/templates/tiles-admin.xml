@@ -20,6 +20,10 @@
    <definition name="admin.cat.index" extends="admin.template">
    		<put-attribute name="content" value="/WEB-INF/views/views/admin/cat/index.jsp" />
    </definition>
+   
+   <definition name="admin.product.index" extends="admin.template">
+   		<put-attribute name="content" value="/WEB-INF/views/views/admin/product/index.jsp" />
+   </definition>
   
   
 </tiles-definitions>
