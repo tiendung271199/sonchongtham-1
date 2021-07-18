@@ -25,6 +25,7 @@
 </head>
 
 <jsp:useBean id="stringUtil" class="spring.util.StringUtil" scope="application"></jsp:useBean>
+<jsp:useBean id="dateUtil" class="spring.util.DateUtil" scope="application"></jsp:useBean>
 <c:url value="/" var="urlIndex" scope="application"></c:url>
 <c:url value="/tin-tuc" var="urlBlog" scope="application"></c:url>
 <c:url value="/chi-tiet" var="urlDetail" scope="application"></c:url>
