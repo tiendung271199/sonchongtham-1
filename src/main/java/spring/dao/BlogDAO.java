@@ -162,4 +162,25 @@ public class BlogDAO extends AbstractDAO<Blog> {
 		});
 	}
 
+	// Lấy tin tức liên quan
+	public List<Blog> getListRelate(int id, int catId) {
+		String sql = "SELECT * FROM blogs b INNER JOIN categories c ON b.catId = c.id"
+				+ " INNER JOIN users u ON b.userId = u.id WHERE b.id != ? AND b.catId = ? ORDER BY RAND() DESC LIMIT 4";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<List<Blog>>() {
+			List<Blog> list = new ArrayList<Blog>();
+
+			@Override
+			public List<Blog> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				while (rs.next()) {
+					list.add(new Blog(rs.getInt("b.id"), rs.getString("title"),
+							new Category(rs.getInt("c.id"), rs.getString("c.name")), rs.getString("detail"),
+							new User(rs.getInt("u.id"), rs.getString("username"), rs.getString("fullname"),
+									rs.getString("avatar")),
+							rs.getString("picture"), rs.getInt("views"), rs.getTimestamp("b.createAt")));
+				}
+				return list;
+			}
+		}, id, catId);
+	}
+
 }

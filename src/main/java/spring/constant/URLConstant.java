@@ -3,6 +3,8 @@ package spring.constant;
 public class URLConstant {
 
 	public static final String URL_EMPTY = "";
+
+	public static final String URL_INDEX = "";
 	public static final String URL_CONTACT = "lien-he";
 	public static final String URL_DETAIL = "chi-tiet/{name}/{id}";
 	

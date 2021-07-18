@@ -28,7 +28,7 @@
                 		<c:forEach items="${listBlogByViews}" var="blog">
 		                    <div class="col-lg-3">
 		                        <div class="categories__item set-bg" data-setbg="${projectContextPath}/img/categories/cat-1.jpg">
-		                            <h5><a href="#" title="${blog.title}">${stringUtil.setTitleCompact(blog.title)}</a></h5>
+		                            <h5><a href="${urlDetail}/${stringUtil.makeSlug(blog.title)}/${blog.id}" title="${blog.title}">${stringUtil.setStringCompact(blog.title,10)}</a></h5>
 		                        </div>
 		                    </div>
 	                    </c:forEach>
@@ -55,7 +55,7 @@
 		                    <div class="featured__item">
 		                        <div class="featured__item__pic set-bg" data-setbg="${projectContextPath}/img/featured/feature-1.jpg"></div>
 		                        <div class="featured__item__text">
-		                            <h6><a href="#" title="${blog.title}">${blog.title}</a></h6>
+		                            <h6><a href="${urlDetail}/${stringUtil.makeSlug(blog.title)}/${blog.id}" title="${blog.title}">${blog.title}</a></h6>
 		                        </div>
 		                    </div>
 		                </div>
