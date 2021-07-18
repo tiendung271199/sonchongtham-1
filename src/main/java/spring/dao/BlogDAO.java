@@ -38,6 +38,31 @@ public class BlogDAO extends AbstractDAO<Blog> {
 	}
 
 	@Override
+	public Blog findById(int id) {
+		String sql = "SELECT * FROM blogs b INNER JOIN categories c ON b.catId = c.id"
+				+ " INNER JOIN users u ON b.userId = u.id WHERE b.id = ?";
+		List<Blog> list = jdbcTemplate.query(sql, new ResultSetExtractor<List<Blog>>() {
+			List<Blog> list = new ArrayList<Blog>();
+
+			@Override
+			public List<Blog> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				if (rs.next()) {
+					list.add(new Blog(rs.getInt("b.id"), rs.getString("title"),
+							new Category(rs.getInt("c.id"), rs.getString("c.name")), rs.getString("detail"),
+							new User(rs.getInt("u.id"), rs.getString("username"), rs.getString("fullname"),
+									rs.getString("avatar")),
+							rs.getString("picture"), rs.getInt("views"), rs.getTimestamp("b.createAt")));
+				}
+				return list;
+			}
+		}, id);
+		if (list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
+
+	@Override
 	public List<Blog> getList(int offset, int rowCount) {
 		String sql = "SELECT * FROM blogs b INNER JOIN categories c ON b.catId = c.id"
 				+ " INNER JOIN users u ON b.userId = u.id ORDER BY b.id DESC LIMIT ?,?";
@@ -93,6 +118,48 @@ public class BlogDAO extends AbstractDAO<Blog> {
 	public int del(int id) {
 		String sql = "DELETE FROM blogs WHERE id = ?";
 		return jdbcTemplate.update(sql, id);
+	}
+
+	// Lấy tin tức mới nhất
+	public List<Blog> getListNew() {
+		String sql = "SELECT * FROM blogs b INNER JOIN categories c ON b.catId = c.id"
+				+ " INNER JOIN users u ON b.userId = u.id ORDER BY b.id DESC LIMIT 8";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<List<Blog>>() {
+			List<Blog> list = new ArrayList<Blog>();
+
+			@Override
+			public List<Blog> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				while (rs.next()) {
+					list.add(new Blog(rs.getInt("b.id"), rs.getString("title"),
+							new Category(rs.getInt("c.id"), rs.getString("c.name")), rs.getString("detail"),
+							new User(rs.getInt("u.id"), rs.getString("username"), rs.getString("fullname"),
+									rs.getString("avatar")),
+							rs.getString("picture"), rs.getInt("views"), rs.getTimestamp("b.createAt")));
+				}
+				return list;
+			}
+		});
+	}
+
+	// Lấy tin tức nổi bật (theo lượt xem)
+	public List<Blog> getListByViews() {
+		String sql = "SELECT * FROM blogs b INNER JOIN categories c ON b.catId = c.id"
+				+ " INNER JOIN users u ON b.userId = u.id ORDER BY b.views DESC LIMIT 8";
+		return jdbcTemplate.query(sql, new ResultSetExtractor<List<Blog>>() {
+			List<Blog> list = new ArrayList<Blog>();
+
+			@Override
+			public List<Blog> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				while (rs.next()) {
+					list.add(new Blog(rs.getInt("b.id"), rs.getString("title"),
+							new Category(rs.getInt("c.id"), rs.getString("c.name")), rs.getString("detail"),
+							new User(rs.getInt("u.id"), rs.getString("username"), rs.getString("fullname"),
+									rs.getString("avatar")),
+							rs.getString("picture"), rs.getInt("views"), rs.getTimestamp("b.createAt")));
+				}
+				return list;
+			}
+		});
 	}
 
 }

@@ -10,47 +10,55 @@ import spring.model.Blog;
 
 @Service
 public class BlogService implements ICRUDService<Blog> {
-	
+
 	@Autowired
-	private BlogDAO blogService;
+	private BlogDAO blogDAO;
 
 	@Override
 	public List<Blog> getAll() {
-		return blogService.getAll();
+		return blogDAO.getAll();
 	}
 
 	@Override
 	public int save(Blog blog) {
-		return blogService.save(blog);
+		return blogDAO.save(blog);
 	}
 
 	@Override
 	public int update(Blog blog) {
-		return blogService.update(blog);
+		return blogDAO.update(blog);
 	}
-	
+
 	public int updateView(int id) {
-		return blogService.updateView(id);
+		return blogDAO.updateView(id);
 	}
 
 	@Override
 	public int del(int id) {
-		return blogService.del(id);
+		return blogDAO.del(id);
 	}
 
 	@Override
 	public Blog findById(int id) {
-		return null;
+		return blogDAO.findById(id);
 	}
 
 	@Override
 	public List<Blog> getList(int offset, int rowCount) {
-		return blogService.getList(offset, rowCount);
+		return blogDAO.getList(offset, rowCount);
 	}
 
 	@Override
 	public int totalRow() {
-		return blogService.totalRow();
+		return blogDAO.totalRow();
 	}
-    
+
+	public List<Blog> getListNew() {
+		return blogDAO.getListNew();
+	}
+	
+	public List<Blog> getListByViews() {
+		return blogDAO.getListByViews();
+	}
+
 }

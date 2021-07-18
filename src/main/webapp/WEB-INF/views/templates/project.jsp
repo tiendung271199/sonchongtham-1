@@ -13,10 +13,7 @@
     
     <c:url value="/resources/project" var="projectContextPath" scope="application" ></c:url>
 
-    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-
-    <!-- Css Styles -->
     <link rel="stylesheet" href="${projectContextPath}/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="${projectContextPath}/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="${projectContextPath}/css/elegant-icons.css" type="text/css">
@@ -27,8 +24,13 @@
     <link rel="stylesheet" href="${projectContextPath}/css/style.css" type="text/css">
 </head>
 
+<jsp:useBean id="stringUtil" class="spring.util.StringUtil" scope="application"></jsp:useBean>
+<c:url value="/" var="urlIndex" scope="application"></c:url>
+<c:url value="/tin-tuc" var="urlBlog" scope="application"></c:url>
+<c:url value="/chi-tiet" var="urlDetail" scope="application"></c:url>
+<c:url value="/lien-he" var="urlContact" scope="application"></c:url>
+
 <body>
-    <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
@@ -39,7 +41,6 @@
 
     <tiles:insertAttribute name="footer" ></tiles:insertAttribute>
 
-    <!-- Js Plugins -->
     <script src="${projectContextPath}/js/jquery-3.3.1.min.js"></script>
     <script src="${projectContextPath}/js/bootstrap.min.js"></script>
     <script src="${projectContextPath}/js/jquery.nice-select.min.js"></script>
