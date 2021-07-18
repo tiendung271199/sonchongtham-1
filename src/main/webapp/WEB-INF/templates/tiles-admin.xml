@@ -17,7 +17,9 @@
    		<put-attribute name="content" value="/WEB-INF/views/views/admin/index.jsp" />
    </definition>
    
-   
+   <definition name="admin.cat.index" extends="admin.template">
+   		<put-attribute name="content" value="/WEB-INF/views/views/admin/cat/index.jsp" />
+   </definition>
   
   
 </tiles-definitions>
