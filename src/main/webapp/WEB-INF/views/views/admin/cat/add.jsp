@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+<%@ include file="/WEB-INF/views/components/taglib.jsp" %>   
     
 		  <div class="col-md-10">
 				<form id="formAddCat" action="" method="POST">
@@ -11,17 +11,15 @@
 			  			</div>
 			  			<div class="content-box-large box-with-header">
 				  			<div>
-				  			<c:if test="${not empty msg1 }">
-				  				<p>${msg1}</p>
-				  			</c:if>
+				  			
 								<div class="row mb-10"></div>
 								
 								<div class="row">
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label for="cname">Tên danh mục</label>
-											<input type="text" name="cname" class="form-control" placeholder="Nhập tên danh mục">
-											<form:errors path="cat.cname" cssClass="err"/>
+											<input type="text" name="name" class="form-control" placeholder="Nhập tên danh mục">										
+											<form:errors path="cat.name" cssClass="err"/>
 										</div>
 										
 									</div>

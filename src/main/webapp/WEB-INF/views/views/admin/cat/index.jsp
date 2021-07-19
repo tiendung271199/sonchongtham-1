@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+<%@ include file="/WEB-INF/views/components/taglib.jsp" %>
 <div class="col-md-10">
 
   			<div class="content-box-large">
@@ -10,15 +10,11 @@
 		  			</div>
 				</div>
 				<hr>
-				<c:if test="${not empty msg}">
-				<div class="alert alert-success" role="alert">
-				  ${msg}
-				</div>
-				</c:if>	
+				
+			
 				<div class="row">
 					<div class="col-md-8">
-						<a href="" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Thêm</a>
-
+						<a href="${pageContext.request.contextPath}/admin/danh-muc/them-danh-muc.html" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Thêm</a>
 					</div>
                 	<div class="col-md-4">
                  	 <div class="input-group form">
@@ -42,17 +38,17 @@
 						</thead>
 						<tbody>
 						<c:choose>
-							<c:when test="${not empty catList}">
-								<c:forEach items="${catList}" var="cat">
+							<c:when test="${not empty listCat}">
+								<c:forEach items="${listCat}" var="cat">
 							<tr class="odd gradeX">
-								<td>${cat.cid}</td>
-								<td>${cat.cname}</td>
+								<td>${cat.id}</td>
+								<td>${cat.name}</td>
 								<td class="center text-center">
 									<a href="" title="" class="btn btn-primary"><span class="glyphicon glyphicon-pencil "></span> Sửa</a>
                                     <a href="" title="" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Xóa</a>
 								</td>
 							</tr>
-							</c:forEach>
+								</c:forEach>
 							</c:when>
 							<c:otherwise>
 								<tr>
